@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 
 
 #Importing files from different directory
-sys.path.append('Libs')
+sys.path.append('../Libraries')
 
 from real_time_dsp import *
 from zplane import zplane 
@@ -36,12 +36,11 @@ order=4
 fs=48000
 fcut=10000
 fc=fcut/(fs/2)
-btype="low"
 filter_type="butter"
 output_type="ba"
 
 ###################### Getting coeficients ########################
-b, a = signal.iirfilter(order, fc, btype=btype,analog=False,ftype=filter_type,output=output_type)
+b, a = signal.iirfilter(order, fc, btype='low',analog=False,ftype=filter_type,output=output_type)
 
 
 ################### Testing Custom coeficients ####################

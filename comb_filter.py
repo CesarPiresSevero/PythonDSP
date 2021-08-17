@@ -24,7 +24,7 @@ fs=10000 #Sampling frequency
 
 seeds=[65321,12043,2769] #Seeds (1,2 and 3)
 
-size=10000 #Output samples for the random code 
+size=1000 #Output samples for the random code 
 
 d=5 #Delay samples
 
@@ -103,6 +103,6 @@ plt.subplot(121)
 plt.plot(w/math.pi, 20 * np.log10(abs(h)), 'b'); plt.title('Comb Filter Frequency Response')
 plt.ylabel('Amplitude [dB]'); plt.xlabel('Frequency [pi*rad/sample]')
 plt.subplot(122)
-plt.plot(Comb_fr[1:],20 * np.log10(Comb_array_fft[1:]),'r'); plt.title('Comb Filter Result on White Noise')
+plt.plot(Comb_fr[1:],Comb_array_fft[1:],'r'); plt.title('Comb Filter Result on White Noise')
 plt.xlabel('Frequency(Hz)');plt.ylabel('Amplitude')
 plt.show()

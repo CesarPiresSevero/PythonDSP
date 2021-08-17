@@ -19,7 +19,7 @@ from scipy import signal
 import sys
 import matplotlib.pyplot as plt
 #Importing files from different directory
-sys.path.append('Libs')
+sys.path.append('../Libraries')
 from real_time_dsp import *
 from zplane import zplane 
 
@@ -137,4 +137,4 @@ def custom_high_pass(array):
 	return output
 
 ####################### Calling ############################
-if(wav_out): wave_file_process("AudioFiles/Music Stereo Sample.wav",False,b_type+"_"+filter_type+".wav",progress_bar=True,block_size=64,zero_pad=False,stereo=False,pre_proc_func=pre_proc_func,freq_proc_func=None)
+if(wav_out): wave_file_process("../AudioFiles/White Noise.wav",b_type+"_"+filter_type+".wav",progress_bar=True,block_size=64,zero_pad=False,stereo=False,pre_proc_func=pre_proc_func,freq_proc_func=None)

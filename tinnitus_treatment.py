@@ -31,11 +31,11 @@ seeds=[65321,12043,2769] #Seeds (1,2 and 3)
 
 size=441000 #Output samples for the random code 
 
-a_dc=0.98 #Alpha value used in the dc filter
+a_dc=0.9 #Alpha value used in the dc filter
 
 a_t=0.9 #Alpha value used in the notch filter
 
-gain=-36 #Gain factor to be applied in the output file (in dB)
+gain=-12 #Gain factor to be applied in the output file (in dB)
 
 ####################### Functions ############################
 # Making 16bit random numbers
@@ -115,7 +115,7 @@ Tinnitus_array_fft,Tinnitus_fr,Tinnitus_t=get_fft(Tinnitus_array,fs)
 # Saving a wav file with Scypi
 rate=fs
 data=np.asarray(Tinnitus_array, dtype=np.float32)*(10**(gain/20))
-wav.write('Tinnitus_Treatment.wav',rate,data)
+wav.write('Tinnitus.wav',rate,data)
 
 # Plotting with Matplotlib
 plt.figure()

@@ -19,7 +19,7 @@ import scipy.io.wavfile as wav
 import sys
 
 #Importing files from different directory
-sys.path.append('Libs')
+sys.path.append('../Libraries')
 
 from real_time_dsp import *
 
@@ -39,11 +39,9 @@ def sub_left_right(input_data):
 		side=left_data[i]-right_data[i]
 		output_left.append((1-gain)*left_data[i]+side*gain)
 		output_right.append((1-gain)*right_data[i]-side*gain)
-	output_data=[]
-	output_data.append(output_left)
-	output_data.append(output_right)
+	output_data=[output_left,output_right]
 	return output_data
 
 
 ####################### Calling ############################
-wave_file_process("AudioFiles/Music Stereo Sample.wav",False,"Mid_side_out.wav",block_size=256,zero_pad=False,stereo=True,pre_proc_func=sub_left_right)
+wave_file_process("../AudioFiles/Bad Guy Stereo.wav","Mid_side_out.wav",block_size=256,zero_pad=False,stereo=True,pre_proc_func=sub_left_right)

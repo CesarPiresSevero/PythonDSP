@@ -42,7 +42,7 @@ import math
 import scipy.io.wavfile as wav
 from pylab import *
 #Importing files from different directory
-sys.path.append('Libs')
+sys.path.append('../Libraries')
 from real_time_dsp import *
 
 ############################### Tuning Variables ####################################
@@ -253,7 +253,7 @@ def entropyOfEnergy(frame, numSubFrames):
   shortFrames = list(chunks(frame, lenSubFrame))
   energy      = [ shortTermEnergy(s) for s in shortFrames ]
   totalEnergy = sum(energy)
-  if(totalEnergy!=0): energy      = [ e / totalEnergy for e in energy ]
+  energy      = [ e / totalEnergy for e in energy ]
   entropy = 0.0
   for e in energy:
     if e != 0:
@@ -284,8 +284,7 @@ def array_multiply(in1,in2):
   
 
 ################################################### Calling ################################################
-wave_file_process("AudioFiles/Female Speech Bable 10dB SNR.wav",
-                  False,
+wave_file_process("../AudioFiles/Female Speech Office 15dB SNR.wav",
                   "NR_with_VAD.wav",
                   progress_bar=True,
                   block_size=64,
