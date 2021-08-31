@@ -39,8 +39,10 @@
 	---
    #Subject name
 	Polyphase quadrature filter:
-      #List or single string          
-   	category: ["Filters","FIR"]   
+      #Main category        
+   	category: "Filters"
+      #Subcategory field
+      subcategory: "FIR"
       #YYYY/MM/DD   
    	date: "2021/05/04"
       #List or single string
@@ -71,13 +73,14 @@
 '''
 
 #Texts used in the application
-intro_text='''
+logo_text='''
 ################################################################################
 #                                                                              #
 #                       DSP Interactive Encyclopedia                           #
 #                                                                              #
 ################################################################################
-   
+'''
+intro_text='''
 Easy way to seach and collect information about pertinent DSP algorithms. 
 This content will be read from a source file that the data can be added in 
 any order. The idea is to summerize and create an encyclopedia with all 
@@ -99,10 +102,17 @@ return_text='''
 | (R)eturn |   | (E)xit |
 ------------   ----------
 '''
-sort_by_name_text="""----------------
-| Sort by Name |
-----------------
-Select the subject by number:\n"""
+sort_by_name_text="""SORT BY NAME
+
+Select the subject:\n"""
+
+sort_by_date_text="""SORT BY DATE
+
+Select the subject:\n"""
+
+sort_by_category_text="""SORT BY CATEGORY 
+
+Select the subject:\n"""
 
 #Importing libs
 import os
@@ -136,14 +146,22 @@ class application:
             raise
    def print_main_screen(self):
       self.clear_screen()
-      print(intro_text,options_text)
+      print(logo_text,intro_text,options_text)
 
    def get_user_input(self):
       self.keypress=input()
 
-   def print_list_of_options(self,inlist):
-      for index, val in enumerate(inlist):
-         print("("+str(index)+")",val)
+   def print_list_of_options(self,inlist,extralist=None):
+      if(extralist==None):
+         for index, val in enumerate(inlist):
+            print("("+str(index)+")",val)
+      else:
+         for index, val in enumerate(inlist):
+            try:
+               if(extralist[index-1]!=extralist[index]): print("*",extralist[index])
+            except:
+               print("*",extralist[index])
+            print("("+str(index)+")",val)
 
    def menus(self):
       while True:
@@ -174,52 +192,96 @@ class application:
                   self.print_main_screen()
                   print(sort_by_name_text)
                   self.print_list_of_options(subjects)
+                  print(return_text)
                   self.get_user_input()
-                  if not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
+                  if(self.keypress=="r"): 
+                     self.status=0
+                     self.print_main_screen()
+                     break
+                  elif(self.keypress=="e"): 
+                     self.print_main_screen()
+                     print(sort_by_name_text)
+                     self.print_list_of_options(subjects)
+                     print(return_text)
+                     return
+                  elif not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
                      pass
                   else:
                      self.status=3
                      self.subject=subjects[int(self.keypress)]
                      break
-
-
-
-
+                  time.sleep(0.1)
             elif(self.sort=="d"):                        #Sort by date
                while(True):
                   subjects=sorted(list(self.data.keys()))
+                  date={}
+                  for sub in subjects:
+                     try:
+                        date[sub]=self.data[sub]["date"]
+                     except:
+                        date[sub] = "Null"
+                  for val in date: 
+                     if(date[val]=="Null"): date[val]=date.pop(val)  
+                  subjects=list(date.keys())
                   self.print_main_screen()
-                  print(sort_by_name_text)
-                  self.print_list_of_options(subjects)
+                  print(sort_by_date_text)
+                  self.print_list_of_options(subjects,list(date.values()))
+                  print(return_text)
                   self.get_user_input()
-                  if not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
+                  if(self.keypress=="r"):
+                     self.print_main_screen() 
+                     self.status=0
+                     break
+                  elif(self.keypress=="e"): 
+                     self.print_main_screen()
+                     print(sort_by_date_text)
+                     self.print_list_of_options(subjects,list(date.values()))
+                     print(return_text)
+                     return
+                  elif not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
                      pass
                   else:
                      self.status=3
                      self.subject=subjects[int(self.keypress)]
                      break
-            
-
-
-
+                  time.sleep(0.1)
             elif(self.sort=="c"):                        #Sort by category
                while(True):
                   subjects=sorted(list(self.data.keys()))
+                  category={}
+                  for sub in subjects:
+                     try:
+                        category[sub]=self.data[sub]["category"]
+                     except:
+                        category[sub] = "Null"
+                  #Separating category in alphabetical order
+                  category=dict(sorted(category.items(), key=lambda item: item[1]))
+                  #Sending subjects with no category to the end of list
+                  for val in list(category): 
+                     if(category[val]=="Null"): category[val]=category.pop(val)  
+                  subjects=list(category.keys())
                   self.print_main_screen()
-                  print(sort_by_name_text)
-                  self.print_list_of_options(subjects)
+                  print(sort_by_category_text)
+                  self.print_list_of_options(subjects,list(category.values()))
+                  print(return_text)
                   self.get_user_input()
-                  if not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
+                  if(self.keypress=="r"):
+                     self.print_main_screen() 
+                     self.status=0
+                     break
+                  elif(self.keypress=="e"): 
+                     self.print_main_screen()
+                     print(sort_by_category_text)
+                     self.print_list_of_options(subjects,list(category.values()))
+                     print(return_text)
+                     return
+                  elif not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
                      pass
                   else:
                      self.status=3
                      self.subject=subjects[int(self.keypress)]
                      break
-            time.sleep(0.1)
-
-
-
-
+                  time.sleep(0.1)
          #Search menu
          elif(self.status==2):
             break
@@ -236,15 +298,3 @@ class application:
 
 if __name__ == '__main__':
    app_obj=application()
-
-
-
-
-# dictv=dict(data.values())
-# print(dictv["category"])
-# print(data)
-# subjects=[]
-# subjects=list(data.keys())
-# print(app_obj.data[subjects[1]]["contents"])
-# print(app_obj.data[subjects[1]]["subcontents"])
-# print(subjects)

@@ -1,5 +1,6 @@
 Polyphase quadrature filter:
-  category: ["Filters","FIR"]
+  category: "Zilters"
+  subcategory: "FIR"
   date: 2021/01/02
   links: "https://en.wikipedia.org/wiki/Polyphase_quadrature_filter"
   contents: |-
@@ -7,7 +8,7 @@ Polyphase quadrature filter:
 
 
 LZMA:
-  category: [Data compression,asdasd]
+  category: Data compression
   date: 2021/02/02
   links: https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm
   contents: |-
@@ -18,15 +19,12 @@ LZMA:
      Applications: Compression, decimation and interpolation
      Comercial Usage: MP3 
 
-
 Mid Side:
-  category: Music
   contents: |-
       When an exception occurs, it may have an associated value, also known as the exception’s argument. The presence and type of the argument depend on the exception type.
 
-
-
 Tinnitus Treatment:
+  category: "Zilters"
   contents: |-
       Tinnitus treatment using white noise with 
       notch filter in the costumer's frequency
