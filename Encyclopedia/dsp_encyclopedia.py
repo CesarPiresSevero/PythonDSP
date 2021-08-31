@@ -148,6 +148,10 @@ class application:
       self.clear_screen()
       print(logo_text,intro_text,options_text)
 
+   def print_sort_screen(self):
+      self.clear_screen()
+      print(logo_text)
+
    def get_user_input(self):
       self.keypress=input()
 
@@ -189,7 +193,7 @@ class application:
             if(self.sort=="n"):                          #Sort by name
                while(True):
                   subjects=sorted(list(self.data.keys()))
-                  self.print_main_screen()
+                  self.print_sort_screen()
                   print(sort_by_name_text)
                   self.print_list_of_options(subjects)
                   print(return_text)
@@ -199,7 +203,7 @@ class application:
                      self.print_main_screen()
                      break
                   elif(self.keypress=="e"): 
-                     self.print_main_screen()
+                     self.print_sort_screen()
                      print(sort_by_name_text)
                      self.print_list_of_options(subjects)
                      print(return_text)
@@ -223,7 +227,7 @@ class application:
                   for val in date: 
                      if(date[val]=="Null"): date[val]=date.pop(val)  
                   subjects=list(date.keys())
-                  self.print_main_screen()
+                  self.print_sort_screen()
                   print(sort_by_date_text)
                   self.print_list_of_options(subjects,list(date.values()))
                   print(return_text)
@@ -233,7 +237,7 @@ class application:
                      self.status=0
                      break
                   elif(self.keypress=="e"): 
-                     self.print_main_screen()
+                     self.print_sort_screen()
                      print(sort_by_date_text)
                      self.print_list_of_options(subjects,list(date.values()))
                      print(return_text)
@@ -260,7 +264,7 @@ class application:
                   for val in list(category): 
                      if(category[val]=="Null"): category[val]=category.pop(val)  
                   subjects=list(category.keys())
-                  self.print_main_screen()
+                  self.print_sort_screen()
                   print(sort_by_category_text)
                   self.print_list_of_options(subjects,list(category.values()))
                   print(return_text)
@@ -270,7 +274,7 @@ class application:
                      self.status=0
                      break
                   elif(self.keypress=="e"): 
-                     self.print_main_screen()
+                     self.print_sort_screen()
                      print(sort_by_category_text)
                      self.print_list_of_options(subjects,list(category.values()))
                      print(return_text)
@@ -288,11 +292,14 @@ class application:
          #Contents menu
          elif(self.status==3):
             self.clear_screen()
-            print(self.data[subjects[int(self.keypress)]]["contents"])
+            print(self.subject,"\n")
+            print(self.data[self.subject]["contents"])
             return
          #Subcontents menu
          elif(self.status==4):
-            break
+            self.clear_screen()
+            print(self.data[self.subject]["subcontents"])
+            return
          time.sleep(0.1)
 
 
