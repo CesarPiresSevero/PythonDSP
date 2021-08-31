@@ -78,16 +78,16 @@ intro_text='''
 #                                                                              #
 ################################################################################
    
-   Easy way to seach and collect information about pertinent DSP algorithms. 
-   This content will be read from a source file that the data can be added in 
-   any order. The idea is to summerize and create an encyclopedia with all 
-   important DSP concepts in one organized place that can be referenced easier 
-   than a single book or a online search. 
+Easy way to seach and collect information about pertinent DSP algorithms. 
+This content will be read from a source file that the data can be added in 
+any order. The idea is to summerize and create an encyclopedia with all 
+important DSP concepts in one organized place that can be referenced easier 
+than a single book or a online search. 
 '''
 options_text='''
-----------------------------------------   -------------------   ----------
-| Sort by (N)ame, (D)ate or (C)ategory |   | Custom (S)earch |   | (E)xit |
-----------------------------------------   -------------------   ----------
+----------------------------------------   ------------   ----------
+| Sort by (N)ame, (D)ate or (C)ategory |   | (S)earch |   | (E)xit |
+----------------------------------------   ------------   ----------
 '''
 searc_text='''
 ----------------   ------------   ----------
@@ -99,6 +99,10 @@ return_text='''
 | (R)eturn |   | (E)xit |
 ------------   ----------
 '''
+sort_by_name_text="""----------------
+| Sort by Name |
+----------------
+Select the subject by number:\n"""
 
 #Importing libs
 import os
@@ -112,8 +116,11 @@ filename="example.yaml"
 class application:
    def __init__(self):
       self.clear_screen()
+      self.keypress="" #user input
       self.data={} #YAML file dictionary
       self.status=0 #0-> Main menu, 1-> Sort menu, 2-> Search Menu, 3-> Subject menu, 4-> Subcontent menu
+      self.sort=""
+      self.subject=""
       self.read_file()
       self.menus()
 
@@ -132,34 +139,96 @@ class application:
       print(intro_text,options_text)
 
    def get_user_input(self):
-      return(input())
+      self.keypress=input()
+
+   def print_list_of_options(self,inlist):
+      for index, val in enumerate(inlist):
+         print("("+str(index)+")",val)
 
    def menus(self):
       while True:
-         if(self.status==0): #Main menu
+         #Main menu
+         if(self.status==0): 
             #Showing main screen
-            print(intro_text,options_text)
+            self.print_main_screen()
             while True:
-               keypress=self.get_user_input()
-               if(keypress=="e"): return
-               if(keypress not in "ndcs") or keypress=="" or len(keypress)>1:
-                  self.print_main_screen()
+               self.get_user_input()
+               self.print_main_screen()
+               if(self.keypress=="e"): return
+               if(self.keypress not in "ndcs") or self.keypress=="" or len(self.keypress)>1:
+                  pass
                else:
-                  if(keypress in "ndc"): #Sort
+                  if(self.keypress in "ndc"): #Sort
                      self.status=1
+                     self.sort=self.keypress
                      break
                   else:                  #Search
                      self.status=2
                      break
                time.sleep(0.1)
-         elif(self.status==1):
-            subjects=list(self.data.keys())
-            print(self.data[subjects[1]]["contents"])
-            break
+         #Sort menu
+         elif(self.status==1):   
+            if(self.sort=="n"):                          #Sort by name
+               while(True):
+                  subjects=sorted(list(self.data.keys()))
+                  self.print_main_screen()
+                  print(sort_by_name_text)
+                  self.print_list_of_options(subjects)
+                  self.get_user_input()
+                  if not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
+                     pass
+                  else:
+                     self.status=3
+                     self.subject=subjects[int(self.keypress)]
+                     break
+
+
+
+
+            elif(self.sort=="d"):                        #Sort by date
+               while(True):
+                  subjects=sorted(list(self.data.keys()))
+                  self.print_main_screen()
+                  print(sort_by_name_text)
+                  self.print_list_of_options(subjects)
+                  self.get_user_input()
+                  if not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
+                     pass
+                  else:
+                     self.status=3
+                     self.subject=subjects[int(self.keypress)]
+                     break
+            
+
+
+
+            elif(self.sort=="c"):                        #Sort by category
+               while(True):
+                  subjects=sorted(list(self.data.keys()))
+                  self.print_main_screen()
+                  print(sort_by_name_text)
+                  self.print_list_of_options(subjects)
+                  self.get_user_input()
+                  if not self.keypress.isnumeric() or self.keypress=="" or len(self.keypress)>1 or (len(subjects)-1<int(self.keypress)):
+                     pass
+                  else:
+                     self.status=3
+                     self.subject=subjects[int(self.keypress)]
+                     break
+            time.sleep(0.1)
+
+
+
+
+         #Search menu
          elif(self.status==2):
             break
+         #Contents menu
          elif(self.status==3):
-            break
+            self.clear_screen()
+            print(self.data[subjects[int(self.keypress)]]["contents"])
+            return
+         #Subcontents menu
          elif(self.status==4):
             break
          time.sleep(0.1)
