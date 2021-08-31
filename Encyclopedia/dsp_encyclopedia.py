@@ -43,8 +43,10 @@ filename="example.yaml"
    	category: ["Filters","FIR"]
    	date: "12/12/2021"
    	links: "https://en.wikipedia.org/wiki/Polyphase_quadrature_filter"
-   	contents: 
-         """
+   	contents: |-
+         A polyphase quadrature filter, or PQF, is a filter bank which splits an input signal into a given number N (mostly a power of 2) of equidistant sub-bands. 
+         These sub-bands are subsampled by a factor of N, so they are critically sampled.
+         An important application of the polyphase filters (of FIR type) concerns the filtering and decimation of large band (and so high sample rate) input signals, e.g. coming from a high rate ADC, which can not be directly processed by an FPGA or in some case by an ASIC either.
 
    	
 	---
@@ -59,7 +61,7 @@ with open(filename, 'r') as input_data:
          data=yaml.safe_load(input_data)
          subjects=[]
          subjects=list(data.keys())
-         print(data["category"])
+         print(data[subjects[1]]["contents"])
          print(subjects)
         
    except yaml.YAMLError as exc:
