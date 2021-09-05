@@ -189,10 +189,10 @@ class application:
                      break
                time.sleep(0.1)
          #Sort menu
-         elif(self.status==1):   
+         elif(self.status==1):  
+            subjects=sorted(list(self.data.keys())) 
             if(self.sort=="n"):                          #Sort by name
                while(True):
-                  subjects=sorted(list(self.data.keys()))
                   self.print_sort_screen()
                   print(sort_by_name_text)
                   self.print_list_of_options(subjects)
@@ -217,7 +217,6 @@ class application:
                   time.sleep(0.1)
             elif(self.sort=="d"):                        #Sort by date
                while(True):
-                  subjects=sorted(list(self.data.keys()))
                   date={}
                   for sub in subjects:
                      try:
@@ -251,7 +250,6 @@ class application:
                   time.sleep(0.1)
             elif(self.sort=="c"):                        #Sort by category
                while(True):
-                  subjects=sorted(list(self.data.keys()))
                   category={}
                   for sub in subjects:
                      try:
