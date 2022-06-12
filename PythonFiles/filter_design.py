@@ -25,16 +25,16 @@ import matplotlib.pyplot as plt
 
 
 #Importing files from different directory
-sys.path.append('../Libraries')
+sys.path.append('Libs')
 
 from real_time_dsp import *
 from zplane import zplane 
 
 
 ########################### Variables ############################
-order=4
-fs=48000
-fcut=10000
+order=2
+fs=400
+fcut=12
 fc=fcut/(fs/2)
 filter_type="butter"
 output_type="ba"

@@ -103,7 +103,6 @@ white_noise=get_random(seeds,size) #The algorithm output
 
 ########################## Plotting ##################################
 data=np.asarray(white_noise, dtype=np.float32) #Normalized
-print(data.mean(),np.std(data))
 fig1, (ax1_1, ax2_1) = plt.subplots(1, 2)
 fig1.suptitle('White Noise Generator Results')
 count, bins, ignored = ax1_1.hist(data, 30, density=True)
