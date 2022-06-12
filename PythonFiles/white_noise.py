@@ -57,17 +57,18 @@ import numpy as np
 import scipy.io.wavfile as wav
 import os
 
-###################### Imput variables ###################
+#################### Input variables #########################
 
 fs=44100 #Sampling frequency
 
 seeds=[65321,12043,2769] #Seeds (1,2 and 3)
 
-size=4410000 #Output samples for the random code 
+size=44100 #Output samples for the random code (1 sec)
+
+gain=-30 #Output WAV file gain in dB
 
 ####################### Functions ############################
 # Making 16bit random numbers
-#Main Loop for each sample
 def get_random(seeds,size):
     if len(seeds)>3:
         return 0
@@ -95,11 +96,22 @@ def get_random(seeds,size):
         array.append((val/(2**15-1))-1)   #Normalized
     return array
 
-########################## Ploting ##################################
+# Comparing different white noise generator methods
+white_noise=get_random(seeds,size) #The algorithm output
+# white_noise=(np.random.rand(size)*2)-1 #Numpy non-gaussian white noise
+# white_noise=np.random.normal(0,0.57683754,size) #Numpy gaussian white noise
 
-white_noise=get_random(seeds,size)
-
-# Saving a wav file with Scypi
+########################## Plotting ##################################
 data=np.asarray(white_noise, dtype=np.float32) #Normalized
-wav.write('White Noise.wav',fs,data)
+print(data.mean(),np.std(data))
+fig1, (ax1_1, ax2_1) = plt.subplots(1, 2)
+fig1.suptitle('White Noise Generator Results')
+count, bins, ignored = ax1_1.hist(data, 30, density=True)
+ax1_1.plot(bins, 1/(np.std(data) * np.sqrt(2 * np.pi)) *np.exp( - (bins - data.mean())**2 / (2 * np.std(data)**2) ),linewidth=2, color='r')
+ax1_1.set(xlabel='Amplitude',ylabel='samples')
+ax2_1.specgram(data, Fs= fs, NFFT= 128, noverlap=64)
+ax2_1.set(xlabel='Seconds',ylabel='Frequency')
+plt.show()
+##################### Saving WAV file ################################
+wav.write('White Noise.wav',fs,data*(10**(gain/20)))
 
