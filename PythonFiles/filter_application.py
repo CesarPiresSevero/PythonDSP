@@ -19,7 +19,7 @@ from scipy import signal
 import sys
 import matplotlib.pyplot as plt
 #Importing files from different directory
-sys.path.append('../Libraries')
+sys.path.append('Libs')
 from real_time_dsp import *
 from zplane import zplane 
 

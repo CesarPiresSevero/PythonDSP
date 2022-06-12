@@ -42,7 +42,7 @@ import math
 import scipy.io.wavfile as wav
 from pylab import *
 #Importing files from different directory
-sys.path.append('../Libraries')
+sys.path.append('Libs')
 from real_time_dsp import *
 
 ############################### Tuning Variables ####################################

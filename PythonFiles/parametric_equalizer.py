@@ -41,7 +41,7 @@ from math import tan
 from math import sqrt
 #Importing files from different directory
 import sys
-sys.path.append('../Libraries')
+sys.path.append('Libs')
 from real_time_dsp import *
 
 

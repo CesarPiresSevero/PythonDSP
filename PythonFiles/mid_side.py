@@ -19,7 +19,7 @@ import scipy.io.wavfile as wav
 import sys
 
 #Importing files from different directory
-sys.path.append('../Libraries')
+sys.path.append('Libs')
 
 from real_time_dsp import *
 

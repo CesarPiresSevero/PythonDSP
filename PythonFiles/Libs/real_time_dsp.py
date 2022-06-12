@@ -119,7 +119,6 @@ def _get_file_details(in_file_name):
     return outdata
 
 def wave_file_process(in_file_name="",
-                      get_file_details=False,
                       out_file_name="",
                       progress_bar=True,
                       stereo=True,
@@ -128,7 +127,8 @@ def wave_file_process(in_file_name="",
                       zero_pad=True,
                       pre_proc_func=None,
                       freq_proc_func=None,
-                      post_proc_func=None):
+                      post_proc_func=None,
+                      get_file_details=False):
     if(not get_file_details): print("\n#################  Wave File Process #################")
     #Errors check before do any process
     if(in_file_name==""):
