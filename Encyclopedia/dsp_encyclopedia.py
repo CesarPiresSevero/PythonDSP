@@ -153,7 +153,7 @@ class application:
       print(logo_text)
 
    def get_user_input(self):
-      self.keypress=input()
+      self.keypress=input().lower()
 
    def print_list_of_options(self,inlist,extralist=None):
       if(extralist==None):
