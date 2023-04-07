@@ -103,10 +103,10 @@ if __name__ == '__main__':
 
     # Plotting harmonic info
     half=int(size/2)
-    freq=np.linspace(0,fs/2,half)
+    freq=np.linspace(0,fs/2,half+1)
     plt.figure()
-    plt.plot(freq,abs(np.fft.fft(sine_wave*np.hanning(size))[0:half])/half)
-    plt.plot(freq,abs(np.fft.fft(triang_wave*np.hanning(size))[0:half])/half)
-    plt.plot(freq,abs(np.fft.fft(saw_wave*np.hanning(size))[0:half])/half)
-    plt.plot(freq,abs(np.fft.fft(square_wave*np.hanning(size))[0:half])/half)
+    plt.plot(freq,abs(np.fft.fft(sine_wave*np.hanning(size))[0:half+1])/half)
+    plt.plot(freq,abs(np.fft.fft(triang_wave*np.hanning(size))[0:half+1])/half)
+    plt.plot(freq,abs(np.fft.fft(saw_wave*np.hanning(size))[0:half+1])/half)
+    plt.plot(freq,abs(np.fft.fft(square_wave*np.hanning(size))[0:half+1])/half)
     plt.show()
