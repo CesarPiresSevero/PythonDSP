@@ -22,6 +22,8 @@
     - phase: singal phase  (-2pi < phase < 2pi)
     - reverse: change sawtooth ascending or descending
     - duty: duty cycle setting for square wave (0 <= duty <=1)
+    Two graphs are generated with time and frequency data. The harmonic
+    data used a hanning window before FFT.
 '''
 
 ############################### Imports ##################################
@@ -96,17 +98,25 @@ if __name__ == '__main__':
 
     # Plotting wave forms
     plt.figure()
+    plt.title("Waves in time domain")
     plt.plot(sine_wave,"-x")
     plt.plot(triang_wave,"-x")
     plt.plot(saw_wave,"-x")
     plt.plot(square_wave,"-x")
+    plt.ylabel('Amplitude')
+    plt.xlabel('Samples')
+    plt.grid()
 
     # Plotting harmonic info
     half=int(size/2)
     freq=np.linspace(0,fs/2,half+1)
     plt.figure()
+    plt.title("Waves in frequency domain")
     plt.plot(freq,abs(np.fft.fft(sine_wave*np.hanning(size))[0:half+1])/half)
     plt.plot(freq,abs(np.fft.fft(triang_wave*np.hanning(size))[0:half+1])/half)
     plt.plot(freq,abs(np.fft.fft(saw_wave*np.hanning(size))[0:half+1])/half)
     plt.plot(freq,abs(np.fft.fft(square_wave*np.hanning(size))[0:half+1])/half)
+    plt.ylabel('Magnitude')
+    plt.xlabel('Frequency')
+    plt.grid()
     plt.show()
