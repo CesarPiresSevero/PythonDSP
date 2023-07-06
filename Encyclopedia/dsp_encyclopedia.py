@@ -65,13 +65,8 @@
    - Only contents will be displayed, the other fields will be used as
    metadata unless user requestes more info
 
-*	Future ideas
-   - Add pictures from "assets" automatically showing in the terminal or
-   externally as set by the user
-   - Add MSDOS aesthetic to the tool 
-
 '''
-
+# TO DO: Use pyTxtPad to generate these texts based on terminal size
 #Texts used in the application
 logo_text='''
 ################################################################################
@@ -120,7 +115,7 @@ import yaml
 import time
 
 #The YAML file to source from
-filename="example.yaml"
+filename="Data/example.yaml"
 
 #The application class
 class application:
@@ -153,7 +148,7 @@ class application:
       print(logo_text)
 
    def get_user_input(self):
-      self.keypress=input()
+      self.keypress=input().lower()
 
    def print_list_of_options(self,inlist,extralist=None):
       if(extralist==None):
@@ -286,15 +281,18 @@ class application:
                   time.sleep(0.1)
          #Search menu
          elif(self.status==2):
+            # TO DO: Implement word seach based
             break
          #Contents menu
          elif(self.status==3):
             self.clear_screen()
             print(self.subject,"\n")
             print(self.data[self.subject]["contents"])
+            # TO DO: Handle return menu or subcontent menu
             return
          #Subcontents menu
          elif(self.status==4):
+            # TO DO: Handle nested content
             self.clear_screen()
             print(self.data[self.subject]["subcontents"])
             return
