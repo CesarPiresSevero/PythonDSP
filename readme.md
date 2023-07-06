@@ -2,9 +2,27 @@
 
 This project contains hands-on applications for various DSP related topics.
 Examples of audio processing, noise reduction and basic concepts of signal process can be found here.
-Also this repo contains a documention tool that is very useful to keep new algorithms, discoveries or general signal processing theory (or any other information really) at hand.
+Also this repository contains a documentation tool that is very useful to keep new algorithms, discoveries or general signal processing theory (or any other information really) at hand.  
 
-Python DSP repo is the ultimate Digital Signal Processing learning tool!
+*Python DSP is the ultimate Digital Signal Processing learning tool!*
+
+### Usage
+
+The Python version supported by this project is 3.10.
+
+Each folder has a requirements.txt. To install the necessary modules run:
+
+```
+pip install -r requirements.txt
+```
+
+### Future Improvements
+
+* Finish Encyclopedia subcontent display handler
+* Use pyTxtPad to create the Encyclopedia texts
+* Optimize real time process to run in higher frequencies
+* Implement search feature onto Encyclopedia
+* Clean and improve data files
 
 ## Table of contents
 
@@ -12,7 +30,6 @@ Python DSP repo is the ultimate Digital Signal Processing learning tool!
 * [Encyclopedia](#encyclopedia)
 * [Libraries](#libraries)
 * [Algorithms](#algorithms)
-* [Future ideas](#future-ideas)
 
 ## Data
 
@@ -33,7 +50,9 @@ Log files collected using an Inertial Motion Unit sensor. These files are intend
 
 ## Encyclopedia
 
-Easy way to seach and collect information about pertinent DSP algorithms. This content will be read from a source file that the data can be added in any order. The idea is to summerize and create an encyclopedia with all important DSP concepts in one organized place that can be referenced easier than a single book or a online search. The contents can contain any pure text data. Ideally with link for references. The best part is that this data will be stored in the same repo as the demonstration codes. That means only by acessing the repo all the resources are there. The library application will be entire accesed with the terminal and won't use any GUI for usage.
+Easy way to search and collect information about pertinent DSP algorithms. This content will be read from YAML source files which text data can be added in any order. The idea is to summarize and create an encyclopedia with all important DSP concepts in one organized place that can be referenced easier than a single book or a online search. The contents can contain any pure text data. Ideally with link for references. The best part is that this data will be stored in the same repo as the demonstration codes. That means only by accessing the repo all the resources are there. The library application will be entire accessed with the terminal and won't use any GUI for usage.
+
+*The YAML files should be stored within the Encyclopedia folder under the Data folder.*
 
 ### Features
 
@@ -43,11 +62,11 @@ The search engine will sort subjects automatically by:
 * Category alphabetical order
 
 The user can make custom search by:
-* Letters: search any ammount of letters that matches title + contents
+* Letters: search any amount of letters that matches title + contents
 * Keywords: search in title + contents
 * Date modified: using start to end date
 
-The user can also add aditional chapters inside each subject that will be used as index. The user than can access them individually otherwise their contents will be omitted when the main subject is accessed.
+The user can also add additional chapters inside each subject that will be used as index. The user than can access them individually otherwise their contents will be omitted when the main subject is accessed.
 
 ### Data structure
 
@@ -78,7 +97,7 @@ Polyphase quadrature filter:
 General rules:
 * The names "category","date","links","contents" and "subcontents" are mandatory and other names will be ignored
 * No field is mandatory for the code to work. Non complete fields will be set as "Null" in the search
-* Only contents will be displayed, the other fields will be used as metadata unless user requestes more info
+* Only contents will be displayed, the other fields will be used as metadata unless user requests more info
 
 	
 ## Libraries
@@ -195,9 +214,9 @@ The algorithms folder contain various standalone applications demonstrating a re
 ### Examples
 
 * [Comb Filter](Data/Algorithms/comb_filter.py)
-* [Doubel Integration](Data/Algorithms/double_integration.py)
+* [Double Integration](Data/Algorithms/double_integration.py)
 * [Exponential Moving Average Filter](Data/Algorithms/ema_filter.py)
-* [IIR Filter Aplication](Data/Algorithms/filter_application.py)
+* [IIR Filter Application](Data/Algorithms/filter_application.py)
 * [IIR Filter Design](Data/Algorithms/filter_application.py)
 * [Stereo Enhancement (Mid-side)](Data/Algorithms/mid_side.py)
 * [Noise Reduction with Voice Activity Detection](Data/Algorithms/noise_reduction_with_vad.py)
@@ -207,15 +226,4 @@ The algorithms folder contain various standalone applications demonstrating a re
 
 ### Documentation
 
-Complementary documentation related to different algorithms. They can be output results, references, extenal links and so on.
-
-
-## Future Ideas
-
-Here are ranked possible improvements to the Python DSP repository:
-
-* Finish Encyclopedia subcontent display handler
-* Use pyTxtPad to create the Encyclopedia texts
-* Optimize real time process to run in higher frequencies
-* Implement search feature onto Encyclopedia
-* Clean and improve data files
+Complementary documentation related to different algorithms. They can be output results, references, external links and so on.

@@ -115,7 +115,7 @@ import yaml
 import time
 
 #The YAML file to source from
-filename="example.yaml"
+filename="Data/example.yaml"
 
 #The application class
 class application:
