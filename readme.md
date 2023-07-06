@@ -4,11 +4,11 @@ This project contains hands-on applications for various DSP related topics.
 Examples of audio processing, noise reduction and basic concepts of signal process can be found here.
 Also this repository contains a documentation tool that is very useful to keep new algorithms, discoveries or general signal processing theory (or any other information really) at hand.  
 
-*Python DSP is the ultimate Digital Signal Processing learning tool!*
+### **Python DSP is the ultimate Digital Signal Processing learning tool!**
 
 ### Usage
 
-The Python version supported by this project is 3.10.
+The Python version supported by this project is **3.10**.
 
 Each folder has a requirements.txt. To install the necessary modules run:
 
@@ -213,16 +213,16 @@ The algorithms folder contain various standalone applications demonstrating a re
 
 ### Examples
 
-* [Comb Filter](Data/Algorithms/comb_filter.py)
-* [Double Integration](Data/Algorithms/double_integration.py)
-* [Exponential Moving Average Filter](Data/Algorithms/ema_filter.py)
-* [IIR Filter Application](Data/Algorithms/filter_application.py)
-* [IIR Filter Design](Data/Algorithms/filter_application.py)
-* [Stereo Enhancement (Mid-side)](Data/Algorithms/mid_side.py)
-* [Noise Reduction with Voice Activity Detection](Data/Algorithms/noise_reduction_with_vad.py)
-* [Tinnitus Treatment](Data/Algorithms/tinnitus_treatment.py)
-* [Wave Generation](Data/Algorithms/wave_generation.py)
-* [Pseudo Random Number Generator](Data/Algorithms/white_noise.py)
+* [Comb Filter](Algorithms/comb_filter.py)
+* [Double Integration](Algorithms/double_integration.py)
+* [Exponential Moving Average Filter](Algorithms/ema_filter.py)
+* [IIR Filter Application](Algorithms/filter_application.py)
+* [IIR Filter Design](Algorithms/filter_application.py)
+* [Stereo Enhancement (Mid-side)](Algorithms/mid_side.py)
+* [Noise Reduction with Voice Activity Detection](Algorithms/noise_reduction_with_vad.py)
+* [Tinnitus Treatment](Algorithms/tinnitus_treatment.py)
+* [Wave Generation](Algorithms/wave_generation.py)
+* [Pseudo Random Number Generator](Algorithms/white_noise.py)
 
 ### Documentation
 
