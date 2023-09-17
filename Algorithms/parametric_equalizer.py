@@ -294,7 +294,7 @@ def pre_proc_func(input_data):
 	#Return the cascaded filters instances call method
 	return MidPeak3(MidPeak2(MidPeak1(HPShelf(LPShelf(input_data)))))
 
-wave_file_process("../Data/AudioFiles/White Noise.wav",
+wave_file_process("../Data/Audio/White Noise.wav",
 					"ParametricEQ.wav",
 					progress_bar=True,
 					block_size=128,

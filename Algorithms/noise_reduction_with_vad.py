@@ -284,7 +284,7 @@ def array_multiply(in1,in2):
   
 
 ################################################### Calling ################################################
-wave_file_process("../Data/AudioFiles/Female Speech Office 15dB SNR.wav",
+wave_file_process("../Data/Audio/Female Speech Office 15dB SNR.wav",
                   "NR_with_VAD.wav",
                   progress_bar=True,
                   block_size=64,
