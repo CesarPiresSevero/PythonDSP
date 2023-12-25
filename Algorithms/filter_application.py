@@ -137,4 +137,4 @@ def custom_high_pass(array):
 	return output
 
 ####################### Calling ############################
-if(wav_out): wave_file_process("../Data/AudioFiles/White Noise.wav",b_type+"_"+filter_type+".wav",progress_bar=True,block_size=64,zero_pad=False,stereo=False,pre_proc_func=pre_proc_func,freq_proc_func=None)
+if(wav_out): wave_file_process("../Data/Audio/White Noise.wav",b_type+"_"+filter_type+".wav",progress_bar=True,block_size=64,zero_pad=False,stereo=False,pre_proc_func=pre_proc_func,freq_proc_func=None)

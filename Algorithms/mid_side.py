@@ -44,4 +44,4 @@ def sub_left_right(input_data):
 
 
 ####################### Calling ############################
-wave_file_process("../Data/AudioFiles/Bad Guy Stereo.wav","Mid_side_out.wav",block_size=256,zero_pad=False,stereo=True,pre_proc_func=sub_left_right)
+wave_file_process("../Data/Audio/Bad Guy Stereo.wav","Mid_side_out.wav",block_size=256,zero_pad=False,stereo=True,pre_proc_func=sub_left_right)
