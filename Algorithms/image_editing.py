@@ -30,7 +30,6 @@ def grayscale_filter(image):
 	## Only Python
 	# Not efficent code using only python (~ 5150ms)
 	if(False):
-		x = 1/3
 		start_time = time.time()
 		y = []
 		for row in image:
