@@ -301,15 +301,3 @@ wave_file_process("../Data/Audio/White Noise.wav",
 					zero_pad=False,
 					stereo=False,
 					pre_proc_func=pre_proc_func)
-
-
-
-
-
-
-
-
-
-		
-
-
